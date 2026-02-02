@@ -1,18 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
+// AudioUpdater.cs
 using UnityEngine;
 
 public class AudioUpdater : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private AudioSource _audioSource;
+
+    [SerializeField] private AudioClip _flapClip;
+    [SerializeField] private AudioClip _scoreClip;
+    [SerializeField] private AudioClip _gameOverClip;
+
+    private Player _player;
+
+    private void Awake()
     {
-        
+        _player = Locator.Instance.Player;
+        _audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        _player.Flapped += OnFlapped;
+        _player.Scored += OnScored;
+        _player.GameEnded += OnGameEnded;
+    }
+    
+    private void OnFlapped()
+    {
+        _audioSource.PlayOneShot(_flapClip);
+    }
+
+    private void OnScored(int _)
+    {
+        _audioSource.PlayOneShot(_scoreClip);
+    }
+
+    private void OnGameEnded()
+    {
+        _audioSource.PlayOneShot(_gameOverClip);
     }
 }
