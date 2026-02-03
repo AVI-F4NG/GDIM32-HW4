@@ -9,13 +9,9 @@
 
 - Detects gameplay outcomes: scoring in OnTriggerExit2D (PassZone trigger, point gained); losing in OnCollisionEnter2D (Pipe collision, _gameRuns = false)
 
-- Broadcasts outcomes without knowing who responds, via events Flapped, Scored(int points), and GameEnded
-
 The Player script decides when things should happen, but not how UI and audio respond.
 
 #### View: UIUpdater and AudioUpdater
-
-The view responsibilities are in classes that react to the controller and present feedback:
 
 - UIUpdater: listens to Player.PointsChanged and updates _pointsText.text, and listens to Player.GameEnded to show the "game over" UI object.
 
