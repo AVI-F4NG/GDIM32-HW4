@@ -36,6 +36,7 @@ The view scripts subscribe to those events and react locally. This prevents tigh
 The Locator singleton acts as a shared access point, so the view/control scripts don’t need hard references to each other: there is no need for the view scripts to create instances of Player. UIUpdater and AudioUpdater can retrieve the player reference using Locator.Instance.Player. Pipes and spawners can also grab Locator.Instance.Player and subscribe to GameEnded. So lookup is centralized in Locator, and systems are decoupled because they connect through events instead of direct method calls.
 
 ## Open-Source Assets
-If you added any other assets, list them here!
-- [Brackey's Platformer Bundle](https://brackeysgames.itch.io/brackeys-platformer-bundle) - sound effects
-- [2D pixel art seagull sprites](https://elthen.itch.io/2d-pixel-art-seagull-sprites) - seagull sprites
+
+- [Pipe sprites](https://wwolf-w.itch.io/industrial-pipe-platformer-tileset)
+- [2D pixel art bird sprites](https://carysaurus.itch.io/bird-sprites)
+- [Sound effects](https://sfxr.me/)
