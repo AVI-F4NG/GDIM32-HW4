@@ -29,11 +29,11 @@ These scripts never need to know how points are earned or when game-over happens
 
 The Player (controller) publishes signals (Flapped, Scored, GameEnded, PointsChanged) at the moment gameplay state changes.
 
-The view scripts subscribe (+=) to those events and react locally. This prevents tight coupling like "Player directly calls UIUpdater.UpdatePoints()", preventing the player from directly controlling what the "view" scripts should do. Instead, Player just raises Scored?.Invoke(_points) (conceptually), and any number of systems can respond.
+The view scripts subscribe to those events and react locally. This prevents tight coupling like "Player directly calls UIUpdater.UpdatePoints()", preventing the player from directly controlling what the "view" scripts should do. Instead, Player just raises Scored?.Invoke(_points) (conceptually), and any number of systems can respond.
 
 #### Singleton (Locator) and decoupling
 
-The Locator singleton acts as a shared access point for dependencies, so the view/control scripts don’t need hard references to each other: there is no need for the view scripts to create instances of Player. UIUpdater and AudioUpdater can retrieve the player reference using Locator.Instance.Player. Pipes and spawners can also grab Locator.Instance.Player and subscribe to GameEnded. So lookup is centralized in Locator, and systems are decoupled because they connect through events instead of direct method calls.
+The Locator singleton acts as a shared access point, so the view/control scripts don’t need hard references to each other: there is no need for the view scripts to create instances of Player. UIUpdater and AudioUpdater can retrieve the player reference using Locator.Instance.Player. Pipes and spawners can also grab Locator.Instance.Player and subscribe to GameEnded. So lookup is centralized in Locator, and systems are decoupled because they connect through events instead of direct method calls.
 
 ## Open-Source Assets
 If you added any other assets, list them here!
