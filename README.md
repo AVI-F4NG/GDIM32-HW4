@@ -3,7 +3,7 @@
 ### MVC Pattern Implementation
 #### Control: Player
 
-- Reads input (e.g., Space key) and triggers gameplay action via Flap(). 
+- Reads input (Space keydown) and triggers gameplay action (upward force on rigidbody) with Flap(). 
 
 - Applies gameplay effects (adds upward force to its Rigidbody2D in Flap()). 
 
